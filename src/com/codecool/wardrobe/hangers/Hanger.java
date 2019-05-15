@@ -1,17 +1,15 @@
 package com.codecool.wardrobe.hangers;
 
-import com.codecool.wardrobe.cloth.Cloth;
-import com.codecool.wardrobe.cloth.UpperCloth;
+import com.codecool.wardrobe.utils.MyRandom;
 
 public abstract class Hanger {
-    protected UpperCloth upperCloth;
+    public abstract void hangCloth();
 
-    public UpperCloth getUpperCloth() {
-        return upperCloth;
-    }
+    public void createClothes(){
+        for (int i = 0; i < 10; i++) {
+            if(MyRandom.randInt(0, 100) < 50){
 
-
-    public void hangCloth(Cloth cloth) {
-        upperCloth = (UpperCloth) cloth;
+            }
+        }
     }
 }

@@ -1,25 +1,24 @@
 package com.codecool.wardrobe;
 
-import com.codecool.wardrobe.cloth.LowerCloth;
-import com.codecool.wardrobe.cloth.UpperCloth;
-
-import static com.codecool.wardrobe.cloth.LowerType.SKIRT;
-import static com.codecool.wardrobe.cloth.LowerType.TROUSER;
-import static com.codecool.wardrobe.cloth.UpperType.SHIRT;
+import com.codecool.wardrobe.hangers.DoubleHanger;
+import com.codecool.wardrobe.hangers.SingleHanger;
+import com.codecool.wardrobe.utils.MyRandom;
 
 public class Main {
-
     public static void main(String[] args) {
-	    Wardrobe wardrobe = new Wardrobe();
+        int capacity = 10;
+        Wardrobe wardrobe = new Wardrobe(capacity);
+        hangHangers(wardrobe);
+        wardrobe.simulate();
+    }
 
-        for (int i = 0; i < 20; i++) {
-            wardrobe.putHanger(i);
+    private static void hangHangers(Wardrobe wardrobe) {
+        for (int i = 0; i < wardrobe.getCapacity(); i++) {
+            if (MyRandom.randInt(0, 100) < 50) {
+                wardrobe.hangHanger(new SingleHanger());
+            } else {
+                wardrobe.hangHanger(new DoubleHanger());
+            }
         }
-        System.out.println(wardrobe.getHangers());
-
-        wardrobe.putCloth(new LowerCloth(SKIRT, "Adidas"));
-        wardrobe.putCloth(new UpperCloth(SHIRT, "Nike"));
-        wardrobe.putCloth(new UpperCloth(SHIRT, "Nikeeee"));
-        wardrobe.putCloth(new LowerCloth(TROUSER, "PUMA"));
     }
 }
